@@ -5,12 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by حسانين on 04/04/2019.
- */
-
-public class New {
-
+public class NewsModel {
 
     @SerializedName("status")
     @Expose
@@ -20,7 +15,7 @@ public class New {
     private Integer totalResults;
     @SerializedName("articles")
     @Expose
-    private List<Articles> articles = null;
+    private List<Article> articles = null;
 
     public String getStatus() {
         return status;
@@ -38,13 +33,12 @@ public class New {
         this.totalResults = totalResults;
     }
 
-    public List<Articles> getArticles() {
+    public List<Article> getArticles() {
         return articles;
     }
 
-    public void setArticles(List<Articles> articles) {
+    public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
-
 
 }

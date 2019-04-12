@@ -10,21 +10,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.myproject.Models.Articles;
+import com.example.myproject.Models.Article;
 import com.example.myproject.R;
-import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
-
-public class NewAdapter extends ArrayAdapter<Articles>{
+public class NewAdapter extends ArrayAdapter<Article> {
 
     TextView title, author, date, des;
     ImageView img;
 
-    public NewAdapter( Context context, List<Articles> articles) {
+    public NewAdapter(Context context, List<Article> articles) {
         super(context, R.layout.list_item, articles);
     }
 
@@ -32,12 +29,12 @@ public class NewAdapter extends ArrayAdapter<Articles>{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View view=convertView;
-        if (view==null){
-            view=LayoutInflater.from(getContext()).inflate(R.layout.list_item,parent,false);
+        View view = convertView;
+        if (view == null) {
+            view = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
-        Articles articles = getItem(position);
+        Article articlesModel = getItem(position);
 
         title = (TextView) view.findViewById(R.id.title_id);
 
@@ -48,43 +45,40 @@ public class NewAdapter extends ArrayAdapter<Articles>{
         date = (TextView) view.findViewById(R.id.date_id);
 
         img = (ImageView) view.findViewById(R.id.image_id);
-        if (articles.getTitle() == null) {
+        if (articlesModel.getTitle() == null) {
             title.setVisibility(View.GONE);
         } else {
             title.setVisibility(View.VISIBLE);
-            title.setText(articles.getTitle());
+            title.setText(articlesModel.getTitle());
         }
 
 
-        if (articles.getDescription() == null) {
+        if (articlesModel.getDescription() == null) {
             des.setVisibility(View.GONE);
         } else {
             des.setVisibility(View.VISIBLE);
-            des.setText(articles.getDescription());
+            des.setText(articlesModel.getDescription());
         }
-        if (articles.getAuthor() == null) {
+        if (articlesModel.getAuthor() == null) {
             author.setVisibility(View.GONE);
         } else {
             author.setVisibility(View.VISIBLE);
-            author.setText(articles.getAuthor());
+            author.setText(articlesModel.getAuthor());
         }
-        if (articles.getPublishedAt() == null) {
+        if (articlesModel.getPublishedAt() == null) {
             date.setVisibility(View.GONE);
         } else {
             date.setVisibility(View.VISIBLE);
-            date.setText(articles.getPublishedAt());
+            date.setText(articlesModel.getPublishedAt());
         }
 
 
-
-
-
-        if (articles.getUrlToImage() == null) {
+        if (articlesModel.getUrlToImage() == null) {
             img.setVisibility(View.GONE);
         } else {
             img.setVisibility(View.VISIBLE);
             Glide.with(getContext())
-                    .load(articles.getUrlToImage())
+                    .load(articlesModel.getUrlToImage())
                     .centerCrop()
                     .placeholder(R.drawable.header)
                     .into(img);

@@ -1,21 +1,9 @@
 package com.example.myproject.Models;
 
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import javax.xml.transform.Source;
-
-public class Articles {
-
-    public Articles(String author, String title, String description,String date, String urlToImage, String url) {
-        this.author = author;
-        this.title = title;
-        this.description = description;
-        this.publishedAt = date;
-        this.urlToImage = urlToImage;
-        this.url = url;
-    }
+public class Article {
 
     @SerializedName("source")
     @Expose
@@ -40,7 +28,7 @@ public class Articles {
     private String publishedAt;
     @SerializedName("content")
     @Expose
-    private String content;
+    private Object content;
 
     public Source getSource() {
         return source;
@@ -98,11 +86,11 @@ public class Articles {
         this.publishedAt = publishedAt;
     }
 
-    public String getContent() {
+    public Object getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(Object content) {
         this.content = content;
     }
 
